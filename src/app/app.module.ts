@@ -5,16 +5,22 @@ import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleListComponent } from './article-list/article-list.component';
+import { AboutComponent } from './about/about.component';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     FooterComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    AboutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
