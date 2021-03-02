@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { Article } from '../article';
+import { ArticleService } from '../article.service';
+import { ARTICLES } from '../mock-articles';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-article-list',
@@ -7,9 +12,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articleSvc: ArticleService,
+    private titleService: Title,
+    private sharedService: SharedService) { }
 
-  ngOnInit(): void {
+  articles: Article[] = [];
+
+  ngOnInit() {
+    this.titleService.setTitle(
+      `${this.sharedService.blogTitle}`
+    )
+    this.getArticles();
+  }
+
+  // getArticles() {
+  //   this.articleSvc
+  //   .getArticles()
+  //   .subscribe(articles => {this.articles = articles})
+  // }
+
+
+  getArticles() {
+    this.articleSvc
+      .getArticles()
+      .subscribe(data => { this.articles = data })
   }
 
 }
